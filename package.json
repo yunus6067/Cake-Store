@@ -1,0 +1,24 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/yunus6067/Cake-Store#readme",
+  "bugs": {
+    "url": "https://github.com/yunus6067/Cake-Store/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yunus6067/Cake-Store.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1"
+  }
+}

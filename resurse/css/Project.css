@@ -1,0 +1,367 @@
+:root {
+    --culoare-fundal: #fff8f5;
+    --culoare-principala: #8b4a3d;
+    --culoare-secundara: #d48a7a;
+    --culoare-accent: #f3c7b6;
+    --culoare-text: #2f2f2f;
+    --culoare-deschisa: #ffffff;
+
+    --spatiere-mare: 24px;
+    --spatiere-medie: 16px;
+    --spatiere-mica: 10px;
+
+    --raza-colt: 14px;
+    --umbra: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+    --latime-maxima: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: var(--culoare-fundal);
+    color: var(--culoare-text);
+    line-height: 1.6;
+}
+
+header,
+main,
+footer {
+    width: min(100% - 40px, var(--latime-maxima));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    background-color: var(--culoare-principala);
+    color: var(--culoare-deschisa);
+    margin-top: var(--spatiere-mare);
+    padding: var(--spatiere-mare);
+    border-radius: var(--raza-colt);
+    box-shadow: var(--umbra);
+}
+
+header h1 {
+    margin-top: 0;
+    margin-bottom: var(--spatiere-medie);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    color: var(--culoare-deschisa);
+    background-color: rgba(255, 255, 255, 0.12);
+    padding: 10px 14px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--culoare-secundara);
+}
+
+nav li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background-color: var(--culoare-principala);
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: var(--umbra);
+    z-index: 10;
+}
+
+nav li:hover > ul {
+    display: block;
+}
+
+main {
+    margin-top: var(--spatiere-mare);
+    margin-bottom: var(--spatiere-mare);
+}
+
+main > section {
+    background-color: var(--culoare-deschisa);
+    margin-bottom: var(--spatiere-mare);
+    padding: var(--spatiere-mare);
+    border-radius: var(--raza-colt);
+    box-shadow: var(--umbra);
+    border: 2px solid var(--culoare-accent);
+}
+
+section section,
+article,
+aside {
+    margin-top: var(--spatiere-medie);
+    padding: var(--spatiere-medie);
+    border-radius: 12px;
+    background-color: #fff2ec;
+    border: 1px solid #efc4b7;
+}
+
+h1, h2, h3, h4 {
+    color: var(--culoare-principala);
+}
+
+header h1 {
+    color: var(--culoare-deschisa);
+}
+
+img,
+video,
+iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.picture1 {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    margin-top: 10px;
+    font-style: italic;
+    text-align: center;
+}
+
+.linkuri-video {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: var(--spatiere-medie);
+}
+
+.linkuri-video a {
+    text-decoration: none;
+    background-color: var(--culoare-secundara);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: white;
+}
+
+caption {
+    caption-side: top;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+th,
+td {
+    border: 1px solid #d9b4a8;
+    padding: 12px;
+    text-align: left;
+}
+
+thead {
+    background-color: var(--culoare-principala);
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff5f1;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fde9e1;
+}
+
+tfoot {
+    background-color: #f7d4c8;
+    font-weight: bold;
+}
+
+details {
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: #fff4ef;
+    border: 1px solid #ebc1b3;
+    border-radius: 10px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--culoare-principala);
+    color: var(--culoare-deschisa);
+    padding: var(--spatiere-mare);
+    border-radius: var(--raza-colt);
+    box-shadow: var(--umbra);
+    margin-bottom: var(--spatiere-mare);
+}
+
+footer a {
+    color: var(--culoare-deschisa);
+}
+
+.icon-animat {
+    animation: pulse 1.2s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.25);
+    }
+}
+
+/* ecran mediu */
+@media (max-width: 1024px) {
+    header,
+    main,
+    footer {
+        width: min(100% - 24px, 950px);
+    }
+
+    main > section {
+        padding: 18px;
+    }
+}
+
+/* ecran mic */
+@media (max-width: 768px) {
+    header,
+    main,
+    footer {
+        width: min(100% - 16px, 100%);
+    }
+
+    nav > ul {
+        flex-direction: column;
+    }
+
+    nav li ul {
+        position: static;
+        display: block;
+        margin-top: 8px;
+        box-shadow: none;
+        padding-left: 12px;
+    }
+
+    iframe {
+        min-height: 250px;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        font-size: 14px;
+    }
+}
+
+/* ecran foarte mic */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+
+    header,
+    main,
+    footer {
+        width: min(100% - 10px, 100%);
+    }
+
+    main > section {
+        padding: 14px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+.container-video {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.taburi-video {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.taburi-video a {
+    text-decoration: none;
+    padding: 12px;
+    background-color: var(--culoare-secundara);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.taburi-video a:hover {
+    background-color: var(--culoare-principala);
+}
+
+.iframe-video {
+    flex: 1;
+    min-width: 300px;
+}
+
+.iframe-video iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 12px;
+}
+
+.taburi-video a.active {
+    background-color: var(--culoare-principala);
+    transform: scale(1.05);
+}

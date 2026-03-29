@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
         tab.addEventListener("click", function (e) {
             e.preventDefault();
 
-            // schimbă video
             const videoURL = this.getAttribute("href");
             iframe.src = videoURL;
 
