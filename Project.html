@@ -27,18 +27,25 @@
 
         <nav>
             <ul>
-                <li><a href="index.html">Acasă</a><ul>
+                <li>
+                    <a href="index.html">Acasă</a>
+                    <ul>
                         <li><a href="#despre">Despre noi</a></li>
                         <li><a href="#evenimente">Evenimente dulci</a></li>
                         <li><a href="#galerie">Galerie</a></li>
                         <li><a href="#video">Video</a></li>
                         <li><a href="#program">Program</a></li>
                         <li><a href="#intrebari">Întrebări frecvente</a></li>
+                        <li><a href="#formula">Formula prețului</a></li>
+                        <li><a href="#pdf">Catalog PDF</a></li>
+                        <li><a href="#harta-imagine">Hartă imagine</a></li>
+                        <li><a href="#locatie">Locație</a></li>
+                        <li><a href="#playlist">Playlist</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Produse</a></li>
-                <li><a href="#">Torturi la comandă</a></li>
-                <li><a href="#">Oferte</a></li>
+                <li><a href="#galerie">Produse</a></li>
+                <li><a href="#formula">Torturi la comandă</a></li>
+                <li><a href="#pdf">Oferte</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -79,7 +86,7 @@
                 </article>
                 <aside>
                     <h4>Notă utilă</h4>
-                    <p>Această zonă arată folosirea corectă a tagurilor de secționare imbricate și a headingurilor pe niveluri diferite.</p>
+                    <p>Personalul nostru poate oferi recomandări pentru alegerea tortului potrivit în funcție de numărul de invitați, tipul evenimentului și buget.</p>
                 </aside>
             </section>
         </section>
@@ -135,17 +142,16 @@
 
         <section id="video">
             <h2>Videoclipuri recomandate</h2>
-        
+
             <div class="container-video">
-        
                 <div class="taburi-video">
                     <a href="https://www.youtube.com/embed/3AAdKl1UYZs" target="player-video">Decorare tort</a>
                     <a href="https://www.youtube.com/embed/tgbNymZ7vqY" target="player-video">Rețetă cheesecake</a>
                     <a href="https://www.youtube.com/embed/V-_O7nl0Ii0" target="player-video">Prăjitură ciocolată</a>
                 </div>
-        
+
                 <div class="iframe-video">
-                    <iframe 
+                    <iframe
                         name="player-video"
                         src="https://www.youtube.com/embed/3AAdKl1UYZs"
                         title="Videoclip despre torturi"
@@ -153,9 +159,34 @@
                         allowfullscreen>
                     </iframe>
                 </div>
-
             </div>
         </section>
+
+    
+        <section id="formula">
+            <h2>Formula estimării prețului unui tort</h2>
+            <p>Pentru torturile la comandă, o estimare simplă a prețului poate fi calculată în funcție de numărul de porții și prețul per porție:</p>
+
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <mrow>
+                    <mi>T</mi>
+                    <mo>=</mo>
+                    <mi>n</mi>
+                    <mo>&#x00D7;</mo>
+                    <mi>p</mi>
+                </mrow>
+            </math>
+
+            <p>unde:</p>
+            <ul>
+                <li><b>T</b> = prețul total al tortului</li>
+                <li><b>n</b> = numărul de porții</li>
+                <li><b>p</b> = prețul pentru o porție</li>
+            </ul>
+
+            <p>Exemplu: pentru 20 de porții și 18 lei/porție, prețul estimat este 360 lei.</p>
+        </section>
+
         <section id="program">
             <h2>Program și oferte</h2>
             <table>
@@ -207,6 +238,42 @@
             </table>
         </section>
 
+    
+        <section id="pdf">
+            <h2>Catalog PDF</h2>
+            <p>Mai jos puteți consulta catalogul nostru cu torturi, prăjituri și recomandări pentru evenimente:</p>
+
+            <object data="resurse/pdf/catalog-dulce-atelier.pdf" type="application/pdf" width="100%" height="600">
+                <p>Browserul dumneavoastră nu poate afișa PDF-ul. Îl puteți descărca de aici:
+                    <a href="resurse/pdf/catalog-dulce-atelier.pdf">Descarcă PDF-ul</a>.
+                </p>
+            </object>
+        </section>
+
+    
+        <section id="harta-imagine">
+            <h2>Descoperă rapid produsele noastre</h2>
+            <p>Apasă pe diferite zone ale imaginii pentru a ajunge mai rapid la secțiunile importante ale paginii.</p>
+
+            <figure>
+                <img
+                    src="resurse/imagini/harta-deserturi.jpg"
+                    alt="Imagine cu mai multe deserturi: tort, ecler și cheesecake"
+                    usemap="#mapa-deserturi"
+                    width="900"
+                    height="500">
+
+                <map name="mapa-deserturi">
+                    <area shape="rect" coords="20,40,250,250" href="#formula" alt="Torturi la comandă" title="Vezi formula pentru prețul torturilor">
+                    <area shape="circle" coords="450,180,100" href="#evenimente" alt="Evenimente dulci" title="Vezi evenimentele dulci">
+                    <area shape="rect" coords="620,60,870,260" href="#galerie" alt="Galerie produse" title="Vezi galeria produselor">
+                    <area shape="poly" coords="250,320,420,280,560,330,530,460,300,450" href="#pdf" alt="Catalog PDF" title="Deschide catalogul PDF">
+                </map>
+
+                <figcaption>Hartă interactivă pentru navigarea rapidă între torturi, evenimente, galerie și catalog.</figcaption>
+            </figure>
+        </section>
+
         <section id="intrebari">
             <h2>Întrebări frecvente</h2>
 
@@ -224,6 +291,36 @@
                 <summary>Produsele sunt făcute zilnic?</summary>
                 <p>Da, magazinul oferă zilnic <b>prăjituri de casă</b> și alte deserturi pregătite în laborator propriu.</p>
             </details>
+        </section>
+
+    
+        <section id="locatie">
+            <h2>Locația noastră pe hartă</h2>
+            <p>Ne puteți găsi ușor și cu ajutorul hărții de mai jos:</p>
+
+            <iframe
+                src="https://maps.google.com/maps?q=Facultatea%20de%20Matematica%20si%20Informatica%20Bucuresti&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="400"
+                style="border:0;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Locația pe Google Maps">
+            </iframe>
+        </section>
+
+        <section id="playlist">
+            <h2>Explicare cum sa gati</h2>
+            <p>Lige-hack from the chef Antonia Carluccio</p>
+
+            <iframe
+                width="100%"
+                height="500"
+                src="https://www.youtube.com/embed/3AAdKl1UYZs?playlist=3AAdKl1UYZs,V-_O7nl0Ii0,tgbNymZ7vqY&autoplay=1&mute=1&controls=1&loop=1&rel=0"
+                title="Playlist video Dulce Atelier"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
         </section>
     </main>
 
