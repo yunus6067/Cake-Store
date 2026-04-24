@@ -1,23 +1,60 @@
 <header id="inceput" class="inceput">
     <h1>Magazin de Prăjituri Dulce Atelier</h1>
-
-    <nav>
-        <ul>
+    
+    <nav class="meniu">
+        <label for="ch-menu" class="hamburger">
+            <span class="bara"></span>
+            <span class="bara"></span>
+            <span class="bara"></span>
+        </label>
+    
+        <input type="checkbox" id="ch-menu">
+    
+        <ul class="meniu-principal">
             <li>
-                <a href="/index">Acasă</a>
-                <ul>
-                    <li><a href="#despre">Despre noi</a></li>
-                    <li><a href="#evenimente">Evenimente dulci</a></li>
-                    <li><a href="#galerie">Galerie</a></li>
-                    <li><a href="#video">Video</a></li>
-                    <li><a href="#program">Program</a></li>
-                    <li><a href="#intrebari">Întrebări frecvente</a></li>
+                <a href="/" data-text="Acasă">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Acasă</span>
+                </a>
+            </li>
+    
+            <li>
+                <a href="#" data-text="Galerii">
+                    <i class="fa-solid fa-images"></i>
+                    <span>Galerii</span>
+                </a>
+                <ul class="submeniu">
+                    <li><a href="/galerie-statica">Galerie statică</a></li>
+                    <li><a href="/galerie-dinamica">Galerie dinamică</a></li>
                 </ul>
             </li>
-            <li><a href="/despre">Despre site</a></li>
-            <li><a href="#">Torturi la comandă</a></li>
-            <li><a href="#">Oferte</a></li>
-            <li><a href="#contact">Contact</a></li>
+    
+            <li>
+                <a href="/" data-text="Pagina principală">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Pagina principală</span>
+                </a>
+                <ul class="submeniu">
+                    <li><a href="/#despre">Despre</a></li>
+                    <li><a href="/#evenimente">Evenimente</a></li>
+                    <li><a href="/#galerie">Produse</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </li>
+    
+            <li>
+                <a href="/despre" data-text="Despre">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Despre</span>
+                </a>
+            </li>
+    
+            <li>
+                <a href="/contact" data-text="Contact">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>

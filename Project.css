@@ -5,32 +5,22 @@
 
 html {
     scroll-behavior: smooth;
-    /* Font size pe ecran mare (descreste odată cu redimensionarea) */
     font-size: 16px;
     transition: font-size 0.3s ease;
 }
 
 body {
-    /* 1. SCHEMA CROMATICA (5 culori, stocate in body conform cerintei) */
-    /* Culoarea principala din mijloc: --color-3-baza */
     --color-1-inchisa: #4A253A;
-    /* Text, accente intunecate */
     --color-2-accent: #9C517A;
-    /* Header, footer, hover, borders puternice */
     --color-3-baza: #D98FB5;
-    /* Culoarea centrala de baza aleasa pt proiect */
     --color-4-deschisa: #F5E1EB;
-    /* Fundaluri soft, borduri slabe */
     --color-5-fundal: #FCF7F9;
-    /* Fundal de pagina si elemente card */
 
-    /* Variabile definite cerinta "background, text, border, highlight" etc. */
     --bg-color: var(--color-5-fundal);
     --text-color: var(--color-1-inchisa);
     --border-color: var(--color-3-baza);
     --highlight-color: var(--color-4-deschisa);
 
-    /* Alte derivate sau culori in armonie exclusiv din variabile */
     --header-bg: linear-gradient(135deg, var(--color-2-accent), var(--color-1-inchisa));
     --link-bg: rgba(255, 255, 255, 0.15);
     --color-alba: #ffffff;
@@ -38,13 +28,11 @@ body {
     --umbra: 0 4px 10px rgba(74, 37, 58, 0.12);
     --bg-site: linear-gradient(var(--color-alba-trans), var(--color-alba-trans)), url("resurse/imagini/fundal-deserturi.jpg");
 
-    /* Dimensiuni (folosind unitati relative in afara de maxWidth/px pt anumite zone specifice din body/html) */
     --spatiere-mare: 1.5rem;
     --spatiere-medie: 1rem;
     --spatiere-mica: 0.65rem;
     --raza-colt: 0.9rem;
     --latime-maxima: 75rem;
-    /* 1200px in rem */
 
     background: var(--bg-site);
     background-size: cover;
@@ -55,9 +43,7 @@ body {
     margin: 0;
 }
 
-header,
-main,
-footer {
+header,main,footer {
     width: min(100% - 2.5rem, var(--latime-maxima));
     margin-left: auto;
     margin-right: auto;
@@ -110,9 +96,13 @@ nav a {
     font-size: 0.95rem;
 }
 
-nav a:hover,
-nav a:focus {
+nav a:hover{
     background-color: var(--color-3-baza);
+    transform: translateY(-0.12rem);
+}
+
+nav a:focus{
+    background-color: blue;
     transform: translateY(-0.12rem);
 }
 
@@ -143,16 +133,15 @@ main {
     margin-bottom: var(--spatiere-mare);
 }
 
-/* ===== GRID LAYOUT - ECRAN MARE (>1024px) ===== */
 .grid-pagina {
     display: grid;
     gap: var(--spatiere-mare);
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas:
-        "zona1 zona1 zona1"
-        "zona8 zona8 zona8"
-        "zona3 zona2 zona4"
-        "zona5 zona6 zona7";
+        "zona1 zona1 zona1 zona1"
+        "zona8 zona8 zona8 zona8"
+        "zona3 zona2 zona2 zona4"
+        "zona5 zona6 zona7 zona7";
 }
 
 .zona1 {
@@ -187,10 +176,9 @@ main {
     grid-area: zona8;
 }
 
-/* F-PATTERN PENTRU ZONA 1 (Continut predominant de text) */
 .zona1 {
     border-left: 0.6rem solid var(--color-2-accent);
-    padding-left: 2rem !important;
+    padding-left: 2rem 
 }
 
 .zona1 h2 {
@@ -199,7 +187,6 @@ main {
     margin-bottom: 1.5rem;
     display: block;
     border-left: none;
-    /* Sterge bordura de la h2 global pt f-pattern */
 }
 
 .zona1 p {
@@ -233,10 +220,7 @@ aside {
     border: 0.06rem solid var(--highlight-color);
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1,h2,h3,h4 {
     color: var(--color-2-accent);
     margin-top: 0;
 }
@@ -361,7 +345,7 @@ thead {
 }
 
 tbody tr {
-    transition: background-color 0.35s ease, color 0.35s ease;
+    transition: background-color 0.35s ease-in, color 0.35s ease;
 }
 
 tbody tr:nth-child(odd) {
@@ -397,11 +381,9 @@ summary {
     font-size: 1rem;
 }
 
-/* VIDEO STYLES (Stilizare taburi conform videoclip) */
 .container-video {
     display: flex;
     flex-direction: column;
-    /* flexbox obligatoriu: așezare pe coloană pt tab-uri deasupra */
     align-items: center;
     margin-top: var(--spatiere-mare);
 }
@@ -409,15 +391,11 @@ summary {
 .taburi-video {
     display: flex;
     flex-direction: row;
-    /* taburile sunt pe același rând */
     justify-content: center;
     gap: 1.5rem;
-    /* spațiere între butoane */
     position: relative;
     z-index: 2;
-    /* deasupra bordurii groase */
     margin-bottom: -6px;
-    /* acoperă perfect linia superioară a conturului */
 }
 
 .taburi-video a {
@@ -425,51 +403,42 @@ summary {
     padding: 0.8rem 1.8rem;
     background-color: var(--color-alba);
     color: #0b5e5e;
-    /* nuanța verzuie/teal din referință */
+
     font-weight: 700;
     font-size: 1.15rem;
     border-radius: 0.5rem 0.5rem 0 0;
-    /* rotunjit la colțurile de sus */
-    /* Efect de umbră colorată specific screenshot-ului */
     box-shadow: 0 -3px 10px rgba(11, 94, 94, 0.25),
         -3px 0 10px rgba(11, 94, 94, 0.15),
         3px 0 10px rgba(11, 94, 94, 0.15);
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.taburi-video a:hover,
-.taburi-video a.active {
+.taburi-video a:hover,.taburi-video a.active {
     background-color: #f2fcfc;
     transform: translateY(-0.25rem);
-    /* ridicare subtilă la hover */
     color: #0d7070;
 }
 
 .iframe-video {
     width: 100%;
     border: 6px solid #0b5e5e;
-    /* dreptunghiul alb cu border gros teal */
     background-color: var(--color-alba);
     padding: 0;
     position: relative;
     z-index: 1;
     border-radius: 2px;
-    /* colțuri relativ unghiulare, nu foarte rotunde */
 }
 
 .iframe-video iframe {
     width: 100%;
     height: 32rem;
-    /* înălțimea vizualizatorului iframe */
     border: none;
     display: block;
-    /* elimină spațiul de sub elementul inline-block */
-    /* Nu aplicăm shadow sau border aic, deoarece .iframe-video ține rol de container cu border */
 }
 
 #formula math {
     display: block;
-    margin: 1.25rem auto;
+    margin: 1rem auto;
     padding: 1.1rem;
     max-width: 20rem;
     background-color: var(--highlight-color);
@@ -568,9 +537,6 @@ footer small {
     }
 }
 
-/* ================================================================
-   BUTON INAPOI (LINK TOP) - Cerință cu animații, borders & tooltip nativ
-   ================================================================ */
 .link-top {
     position: fixed;
     bottom: 2rem;
@@ -578,12 +544,10 @@ footer small {
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 50%;
-    
-    /* background și box shadow intern mai închis */
+
     background-color: var(--color-4-deschisa);
     box-shadow: inset 0 0 16px var(--color-2-accent), var(--umbra);
     
-    /* border în 4 părți (2 stânga-dreapta deschise, 2 sus-jos închise) */
     border-style: solid;
     border-width: 6px;
     border-color: var(--color-1-inchisa) var(--color-alba) var(--color-1-inchisa) var(--color-alba);
@@ -592,22 +556,21 @@ footer small {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    opacity: 0.6; /* semi-transparent la început */
+    opacity: 0.6;
     transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
     z-index: 1000;
 }
 
 .link-top:hover {
-    opacity: 1; /* devine opac */
-    transform: rotate(360deg); /* rotația peretelui exterior la hover */
+    opacity: 1;
+    transform: rotate(360deg); 
 }
 
-/* Săgețica centrată */
 .link-top .sageata {
     font-size: 2.3rem;
     font-weight: 700;
     color: var(--color-1-inchisa);
-    filter: blur(3px); /* blur inițial */
+    filter: blur(3px);
     transition: filter 0.6s ease-in-out, transform 0.6s ease-in-out;
 }
 
@@ -616,10 +579,6 @@ footer small {
     transform: rotate(-360deg); /* rotație inversă - permite săgeții să rămână pe loc */
 }
 
-/* ================================================================
-   RESPONSIVE - ECRAN MEDIU (≤1024px)
-   Textul va avea dimensiunea 15px. Grid pe 2 coloane.
-   ================================================================ */
 @media (max-width: 1024px) {
     html {
         font-size: 15px;
@@ -656,10 +615,6 @@ footer small {
     }
 }
 
-/* ================================================================
-   RESPONSIVE - ECRAN MIC (≤768px)
-   Text dim. 14px. O singura coloana. Animatii dezactivate.
-   ================================================================ */
 @media (max-width: 768px) {
     html {
         font-size: 14px;
@@ -671,7 +626,6 @@ footer small {
         width: min(100% - 1rem, 100%);
     }
 
-    /* Dezactivarea completa a animatiilor conform cerintei */
     * {
         animation: none !important;
         transition: none !important;
@@ -732,7 +686,6 @@ footer small {
 
     table {
         border-collapse: collapse;
-        /* Pe ecran mic dispare spațiul dintre celule */
         border-spacing: 0;
     }
 
@@ -749,9 +702,6 @@ footer small {
     }
 }
 
-/* ================================================================
-   RESPONSIVE - ECRAN FOARTE MIC (≤480px)
-   ================================================================ */
 @media (max-width: 480px) {
     html {
         font-size: 13px;

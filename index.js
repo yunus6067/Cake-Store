@@ -20,3 +20,20 @@ app.get(["/", "/index", "/home"], (req, res) => {
 app.listen(PORT, () => {
     console.log(`Serverul ruleaza pe http://localhost:${PORT}`);
 });
+
+
+app.get("/despre", (req, res) => {
+    res.render("pagini/despre");
+});
+
+app.get("/contact", (req, res) => {
+    res.render("pagini/contact");
+});
+
+app.get("/galerie-statica", (req, res) => {
+    res.render("pagini/galerie-statica");
+});
+
+app.get("/galerie-dinamica", (req, res) => {
+    res.render("pagini/galerie-dinamica");
+});
