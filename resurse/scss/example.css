@@ -1,0 +1,180 @@
+    /* Ecran mic (Mobil) */
+    @media (max-width: 768px) {
+        display: flex;
+        justify-content: flex-start;
+        position: static;
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1000;
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: transparent;
+            border-radius: 5px;
+
+            .bara {
+                width: 35px;
+                height: 5px;
+                background-color: var(--color-alba);
+                border-radius: 3px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+        }
+
+        /* Checkbox behavior: cross animation for the hamburger */
+        #hamburger-check:checked~.hamburger-icon .bara {
+            &:nth-child(1) {
+                transform: translateY(11px) rotate(45deg);
+                background-color: var(--color-alba);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(3) {
+                transform: translateY(-11px) rotate(-45deg);
+                background-color: var(--color-alba);
+            }
+        }
+
+        .meniu-lista {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000000;
+            z-index: 999;
+            padding: 5rem 1rem 2rem 1rem;
+            margin: 0;
+            overflow-y: auto;
+
+            >li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+
+                /* Primul element e Home/Acasă */
+                &:first-child>.link-meniu {
+                    width: auto;
+                    margin-bottom: 2rem;
+                    padding: 0;
+                    display: inline-block;
+
+                    .text-meniu {
+                        display: none;
+                    }
+
+                    .fa-icon-meniu {
+                        display: inline;
+                        font-size: 2.5rem;
+                        color: var(--color-alba);
+                        margin-right: 0;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        background-color: transparent;
+                        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+                    }
+                }
+
+                >.link-meniu {
+                    display: inline-block;
+                    width: 100%;
+                    max-width: 400px;
+                    padding: 1rem;
+                    background-color: transparent;
+                    color: var(--color-alba);
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    letter-spacing: 2px;
+                    text-transform: none;
+                    text-decoration: none;
+                    border-radius: 0;
+                    text-shadow: none;
+
+                    .text-meniu {
+                        display: inline;
+                    }
+
+                    .fa-icon-meniu {
+                        display: none;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        /* The grey block focus + slight text displacement glitch effect */
+                        background-color: #6a6a6a;
+                        text-shadow: 3px 0px 0 rgba(200, 200, 200, 0.6), -3px 0 0 rgba(100, 100, 100, 0.6);
+                        color: var(--color-alba);
+                    }
+                }
+
+                .submeniu {
+                    position: static;
+                    transform: scaleY(1);
+                    min-width: unset;
+                    box-shadow: none;
+                    margin-top: 0;
+                    display: none;
+                    flex-direction: column;
+                    background-color: transparent;
+                    padding: 0;
+
+                    li a {
+                        font-size: 1.4rem;
+                        font-weight: bold;
+                        color: #8c8c8c;
+                        padding: 0.8rem;
+                        letter-spacing: 2px;
+                        background: transparent;
+                        text-shadow: none;
+                        display: inline-block;
+                        width: 100%;
+                        max-width: 400px;
+                        text-align: center;
+
+                        &::after {
+                            display: none;
+                        }
+
+                        &:hover,
+                        &:focus {
+                            color: var(--color-alba);
+                            background-color: #3b3b3b;
+                        }
+                    }
+                }
+
+                /* Keep submenu opened if hover. */
+                &:hover>.submeniu {
+                    display: flex;
+                }
+            }
+        }
+
+        #hamburger-check:checked~.meniu-lista {
+            display: flex;
+            animation: textSpreadMobile 0.5s ease-out forwards;
+        }
+
+        /* Initial load animation for hamburger lines */
+        .hamburger-icon .bara {
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i}) {
+                    animation: burgerAppear 0.6s ease #{$i * 300}ms backwards;
+                }
+            }
+        }
+    }

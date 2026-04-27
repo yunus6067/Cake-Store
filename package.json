@@ -15,10 +15,15 @@
   "type": "commonjs",
   "main": "script.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build-css": "sass resurse/scss/Project.scss Project.css",
+    "watch-css": "sass --watch resurse/scss/Project.scss Project.css"
   },
   "dependencies": {
     "ejs": "^5.0.1",
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "sass": "^1.99.0"
   }
 }

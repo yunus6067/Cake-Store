@@ -30,11 +30,18 @@
     <header id="inceput" class="inceput">
         <h1>Magazin de Prăjituri Dulce Atelier</h1>
 
-        <nav>
-            <ul>
+        <nav id="meniu-principal">
+            <input type="checkbox" id="hamburger-check" aria-label="Deschide meniul">
+            <label for="hamburger-check" class="hamburger-icon">
+                <div class="bara"></div>
+                <div class="bara"></div>
+                <div class="bara"></div>
+            </label>
+
+            <ul class="meniu-lista">
                 <li>
-                    <a href="index.html">Acasă</a>
-                    <ul>
+                    <a href="index.html" class="link-meniu"><i class="fa-solid fa-house fa-icon-meniu"></i> <span class="text-meniu">Acasă</span></a>
+                    <ul class="submeniu">
                         <li><a href="#despre">Despre noi</a></li>
                         <li><a href="#evenimente">Evenimente dulci</a></li>
                         <li><a href="#galerie">Galerie</a></li>
@@ -48,10 +55,16 @@
                         <li><a href="#playlist">Playlist</a></li>
                     </ul>
                 </li>
-                <li><a href="#galerie">Produse</a></li>
-                <li><a href="#formula">Torturi la comandă</a></li>
-                <li><a href="#pdf">Oferte</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="#galerii" class="link-meniu"><i class="fa-solid fa-images fa-icon-meniu"></i> <span class="text-meniu">Galerii</span></a>
+                    <ul class="submeniu">
+                        <li><a href="galerie-statica">Galerie statică</a></li>
+                        <li><a href="galerie-dinamica">Galerie dinamică</a></li>
+                    </ul>
+                </li>
+                <li><a href="#formula" class="link-meniu"><i class="fa-solid fa-cake-candles fa-icon-meniu"></i> <span class="text-meniu">Torturi la comandă</span></a></li>
+                <li><a href="#pdf" class="link-meniu"><i class="fa-solid fa-file-pdf fa-icon-meniu"></i> <span class="text-meniu">Oferte</span></a></li>
+                <li><a href="#contact" class="link-meniu"><i class="fa-solid fa-address-book fa-icon-meniu"></i> <span class="text-meniu">Contact</span></a></li>
             </ul>
         </nav>
     </header>

@@ -1,255 +1,503 @@
+@charset "UTF-8";
 /* Project.css rescris conform cerintelor layout-responsive si schema-cromatica */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-    transition: font-size 0.3s ease;
+  scroll-behavior: smooth;
+  /* Font size pe ecran mare (descreste odată cu redimensionarea) */
+  font-size: 16px;
+  transition: font-size 0.3s ease;
 }
 
 body {
-    --color-1-inchisa: #4A253A;
-    --color-2-accent: #9C517A;
-    --color-3-baza: #D98FB5;
-    --color-4-deschisa: #F5E1EB;
-    --color-5-fundal: #FCF7F9;
-
-    --bg-color: var(--color-5-fundal);
-    --text-color: var(--color-1-inchisa);
-    --border-color: var(--color-3-baza);
-    --highlight-color: var(--color-4-deschisa);
-
-    --header-bg: linear-gradient(135deg, var(--color-2-accent), var(--color-1-inchisa));
-    --link-bg: rgba(255, 255, 255, 0.15);
-    --color-alba: #ffffff;
-    --color-alba-trans: rgba(255, 255, 255, 0.95);
-    --umbra: 0 4px 10px rgba(74, 37, 58, 0.12);
-    --bg-site: linear-gradient(var(--color-alba-trans), var(--color-alba-trans)), url("resurse/imagini/fundal-deserturi.jpg");
-
-    --spatiere-mare: 1.5rem;
-    --spatiere-medie: 1rem;
-    --spatiere-mica: 0.65rem;
-    --raza-colt: 0.9rem;
-    --latime-maxima: 75rem;
-
-    background: var(--bg-site);
-    background-size: cover;
-    background-attachment: fixed;
-    color: var(--text-color);
-    font-family: "Roboto", sans-serif;
-    line-height: 1.6;
-    margin: 0;
+  /* 1. SCHEMA CROMATICA (5 culori, stocate in body conform cerintei) */
+  /* Culoarea principala din mijloc: --color-3-baza */
+  --color-1-inchisa: #4A253A;
+  /* Text, accente intunecate */
+  --color-2-accent: #9C517A;
+  /* Header, footer, hover, borders puternice */
+  --color-3-baza: #D98FB5;
+  /* Culoarea centrala de baza aleasa pt proiect */
+  --color-4-deschisa: #F5E1EB;
+  /* Fundaluri soft, borduri slabe */
+  --color-5-fundal: #FCF7F9;
+  /* Fundal de pagina si elemente card */
+  /* Variabile definite cerinta "background, text, border, highlight" etc. */
+  --bg-color: var(--color-5-fundal);
+  --text-color: var(--color-1-inchisa);
+  --border-color: var(--color-3-baza);
+  --highlight-color: var(--color-4-deschisa);
+  /* Alte derivate sau culori in armonie exclusiv din variabile */
+  --header-bg: linear-gradient(135deg, var(--color-2-accent), var(--color-1-inchisa));
+  --link-bg: rgba(255, 255, 255, 0.15);
+  --color-alba: #ffffff;
+  --color-alba-trans: rgba(255, 255, 255, 0.95);
+  --umbra: 0 4px 10px rgba(74, 37, 58, 0.12);
+  --bg-site: linear-gradient(var(--color-alba-trans), var(--color-alba-trans)), url("resurse/imagini/fundal-deserturi.jpg");
+  /* Dimensiuni (folosind unitati relative in afara de maxWidth/px pt anumite zone specifice din body/html) */
+  --spatiere-mare: 1.5rem;
+  --spatiere-medie: 1rem;
+  --spatiere-mica: 0.65rem;
+  --raza-colt: 0.9rem;
+  --latime-maxima: 75rem;
+  /* 1200px in rem */
+  background: var(--bg-site);
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  margin: 0;
 }
 
-header,main,footer {
-    width: min(100% - 2.5rem, var(--latime-maxima));
-    margin-left: auto;
-    margin-right: auto;
+header,
+main,
+footer {
+  width: min(100% - 2.5rem, var(--latime-maxima));
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header {
-    background: var(--header-bg);
-    color: var(--color-alba);
-    margin-top: var(--spatiere-mare);
-    padding: var(--spatiere-mare);
-    border-radius: var(--raza-colt);
-    box-shadow: var(--umbra);
+  background: var(--header-bg);
+  color: var(--color-alba);
+  margin-top: var(--spatiere-mare);
+  padding: var(--spatiere-mare);
+  border-radius: var(--raza-colt);
+  box-shadow: var(--umbra);
 }
 
 header h1 {
-    margin-top: 0;
-    margin-bottom: var(--spatiere-medie);
-    color: var(--color-alba);
-    text-align: center;
-    font-size: clamp(1.6rem, 3vw, 2.5rem);
-    letter-spacing: 0.03rem;
+  margin-top: 0;
+  margin-bottom: var(--spatiere-medie);
+  color: var(--color-alba);
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  letter-spacing: 0.03rem;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+#meniu-principal .meniu-lista > li .submeniu li a:hover, #meniu-principal .meniu-lista > li .submeniu li a:focus, #meniu-principal .meniu-lista > li > .link-meniu:hover, #meniu-principal .meniu-lista > li > .link-meniu:focus {
+  background-color: var(--color-3-baza);
+  color: var(--color-alba);
 }
 
-nav>ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
+#meniu-principal .meniu-lista > li .submeniu li a, #meniu-principal .meniu-lista > li > .link-meniu {
+  transition: background-color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease;
 }
 
-nav li {
-    position: relative;
+#hamburger-check {
+  display: none;
 }
 
-nav a {
-    display: block;
-    text-decoration: none;
-    color: var(--color-alba);
-    background-color: var(--link-bg);
-    padding: 0.65rem 0.9rem;
-    border-radius: 0.65rem;
-    transition: background-color 0.3s, transform 0.3s;
-    font-weight: 500;
-    font-size: 0.95rem;
+.hamburger-icon {
+  display: none;
 }
 
-nav a:hover{
-    background-color: var(--color-3-baza);
-    transform: translateY(-0.12rem);
+#meniu-principal .meniu-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
 }
-
-nav a:focus{
-    background-color: blue;
-    transform: translateY(-0.12rem);
+#meniu-principal .meniu-lista > li {
+  position: relative;
 }
-
-nav li ul {
+#meniu-principal .meniu-lista > li > .link-meniu {
+  display: block;
+  text-decoration: none;
+  color: var(--color-alba);
+  background-color: var(--link-bg);
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.65rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-shadow: 0 -25px 0 transparent;
+  /* Hide icons by default on desktop if needed, wait, we show icons by default now! */
+}
+#meniu-principal .meniu-lista > li > .link-meniu .fa-icon-meniu {
+  margin-right: 0.4rem;
+}
+#meniu-principal .meniu-lista > li > .link-meniu:hover, #meniu-principal .meniu-lista > li > .link-meniu:focus {
+  text-shadow: 0 0px 8px rgba(0, 0, 0, 0.6);
+  /* falls and aligns */
+}
+#meniu-principal .meniu-lista > li .submeniu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 15rem;
+  background-color: var(--color-2-accent);
+  padding: 0.5rem;
+  border-radius: 0.65rem;
+  box-shadow: var(--umbra);
+  z-index: 20;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease-in-out;
+}
+#meniu-principal .meniu-lista > li .submeniu li {
+  width: 100%;
+}
+#meniu-principal .meniu-lista > li .submeniu li a {
+  display: block;
+  text-decoration: none;
+  color: var(--color-alba);
+  padding: 0.65rem;
+  position: relative;
+}
+#meniu-principal .meniu-lista > li .submeniu li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0.2rem;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background-color: var(--color-alba);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+#meniu-principal .meniu-lista > li .submeniu li a:hover::after, #meniu-principal .meniu-lista > li .submeniu li a:focus::after {
+  transform: scaleX(1);
+}
+#meniu-principal .meniu-lista > li:hover > .submeniu, #meniu-principal .meniu-lista > li:focus-within > .submeniu {
+  transform: scaleY(1);
+}
+#meniu-principal {
+  /* Ecran mediu (Tabletă) */
+}
+@media (max-width: 1024px) {
+  #meniu-principal .meniu-lista > li > .link-meniu {
+    /* Textul din interior e ascuns vizual, ramane iconul */
+  }
+  #meniu-principal .meniu-lista > li > .link-meniu .text-meniu {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 15rem;
-    background-color: var(--color-2-accent);
+  }
+  #meniu-principal .meniu-lista > li > .link-meniu .fa-icon-meniu {
+    font-size: 1.4rem;
+    margin-right: 0;
+  }
+}
+#meniu-principal {
+  /* Ecran mic (Mobil) */
+}
+@media (max-width: 768px) {
+  #meniu-principal {
+    display: flex;
+    justify-content: flex-start;
+    position: static;
+  }
+  #meniu-principal .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
     padding: 0.5rem;
-    border-radius: 0.65rem;
-    box-shadow: var(--umbra);
-    z-index: 20;
-}
-
-nav li:hover>ul,
-nav li:focus-within>ul {
-    display: block;
-}
-
-nav li ul li {
+    z-index: 1000;
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: transparent;
+    border-radius: 5px;
+  }
+  #meniu-principal .hamburger-icon .bara {
+    width: 35px;
+    height: 5px;
+    background-color: var(--color-alba);
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  #meniu-principal {
+    /* Checkbox behavior: cross animation for the hamburger */
+  }
+  #meniu-principal #hamburger-check:checked ~ .hamburger-icon .bara:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+    background-color: var(--color-alba);
+  }
+  #meniu-principal #hamburger-check:checked ~ .hamburger-icon .bara:nth-child(2) {
+    opacity: 0;
+  }
+  #meniu-principal #hamburger-check:checked ~ .hamburger-icon .bara:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+    background-color: var(--color-alba);
+  }
+  #meniu-principal .meniu-lista {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 999;
+    padding: 5rem 1rem 2rem 1rem;
+    margin: 0;
+    overflow-y: auto;
+  }
+  #meniu-principal .meniu-lista > li {
     width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    /* Primul element e Home/Acasă */
+  }
+  #meniu-principal .meniu-lista > li:first-child > .link-meniu {
+    width: auto;
+    margin-bottom: 2rem;
+    padding: 0;
+    display: inline-block;
+  }
+  #meniu-principal .meniu-lista > li:first-child > .link-meniu .text-meniu {
+    display: none;
+  }
+  #meniu-principal .meniu-lista > li:first-child > .link-meniu .fa-icon-meniu {
+    display: inline;
+    font-size: 2.5rem;
+    color: var(--color-alba);
+    margin-right: 0;
+  }
+  #meniu-principal .meniu-lista > li:first-child > .link-meniu:hover, #meniu-principal .meniu-lista > li:first-child > .link-meniu:focus {
+    background-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  #meniu-principal .meniu-lista > li > .link-meniu {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    background-color: transparent;
+    color: var(--color-alba);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: none;
+    text-decoration: none;
+    border-radius: 0;
+    text-shadow: none;
+  }
+  #meniu-principal .meniu-lista > li > .link-meniu .text-meniu {
+    display: inline;
+  }
+  #meniu-principal .meniu-lista > li > .link-meniu .fa-icon-meniu {
+    display: none;
+  }
+  #meniu-principal .meniu-lista > li > .link-meniu:hover, #meniu-principal .meniu-lista > li > .link-meniu:focus {
+    /* The grey block focus + slight text displacement glitch effect */
+    background-color: #6a6a6a;
+    text-shadow: 3px 0px 0 rgba(200, 200, 200, 0.6), -3px 0 0 rgba(100, 100, 100, 0.6);
+    color: var(--color-alba);
+  }
+  #meniu-principal .meniu-lista > li .submeniu {
+    position: static;
+    transform: scaleY(1);
+    min-width: unset;
+    box-shadow: none;
+    margin-top: 0;
+    display: none;
+    flex-direction: column;
+    background-color: transparent;
+    padding: 0;
+  }
+  #meniu-principal .meniu-lista > li .submeniu li a {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #8c8c8c;
+    padding: 0.8rem;
+    letter-spacing: 2px;
+    background: transparent;
+    text-shadow: none;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  #meniu-principal .meniu-lista > li .submeniu li a::after {
+    display: none;
+  }
+  #meniu-principal .meniu-lista > li .submeniu li a:hover, #meniu-principal .meniu-lista > li .submeniu li a:focus {
+    color: var(--color-alba);
+    background-color: #3b3b3b;
+  }
+  #meniu-principal .meniu-lista > li {
+    /* Keep submenu opened if hover. */
+  }
+  #meniu-principal .meniu-lista > li:hover > .submeniu {
+    display: flex;
+  }
+  #meniu-principal #hamburger-check:checked ~ .meniu-lista {
+    display: flex;
+    animation: textSpreadMobile 0.5s ease-out forwards;
+  }
+  #meniu-principal {
+    /* Initial load animation for hamburger lines */
+  }
+  #meniu-principal .hamburger-icon .bara:nth-child(1) {
+    animation: burgerAppear 0.6s ease 300ms backwards;
+  }
+  #meniu-principal .hamburger-icon .bara:nth-child(2) {
+    animation: burgerAppear 0.6s ease 600ms backwards;
+  }
+  #meniu-principal .hamburger-icon .bara:nth-child(3) {
+    animation: burgerAppear 0.6s ease 900ms backwards;
+  }
 }
 
+@keyframes textSpreadMobile {
+  from {
+    letter-spacing: -3px;
+  }
+  to {
+    letter-spacing: 0px;
+  }
+}
+@keyframes burgerAppear {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+    background-color: var(--color-1-inchisa);
+  }
+  50% {
+    transform: scale(1.1) rotate(10deg);
+    opacity: 0.5;
+    background-color: var(--color-3-baza);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    background-color: var(--color-alba);
+  }
+}
 main {
-    margin-top: var(--spatiere-mare);
-    margin-bottom: var(--spatiere-mare);
+  margin-top: var(--spatiere-mare);
+  margin-bottom: var(--spatiere-mare);
 }
 
+/* ===== GRID LAYOUT - ECRAN MARE (>1024px) ===== */
 .grid-pagina {
-    display: grid;
-    gap: var(--spatiere-mare);
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-        "zona1 zona1 zona1 zona1"
-        "zona8 zona8 zona8 zona8"
-        "zona3 zona2 zona2 zona4"
-        "zona5 zona6 zona7 zona7";
+  display: grid;
+  gap: var(--spatiere-mare);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "zona1 zona1 zona1" "zona8 zona8 zona8" "zona3 zona2 zona4" "zona5 zona6 zona7";
 }
 
 .zona1 {
-    grid-area: zona1;
+  grid-area: zona1;
 }
 
 .zona2 {
-    grid-area: zona2;
+  grid-area: zona2;
 }
 
 .zona3 {
-    grid-area: zona3;
+  grid-area: zona3;
 }
 
 .zona4 {
-    grid-area: zona4;
+  grid-area: zona4;
 }
 
 .zona5 {
-    grid-area: zona5;
+  grid-area: zona5;
 }
 
 .zona6 {
-    grid-area: zona6;
+  grid-area: zona6;
 }
 
 .zona7 {
-    grid-area: zona7;
+  grid-area: zona7;
 }
 
 .zona8 {
-    grid-area: zona8;
+  grid-area: zona8;
 }
 
+/* F-PATTERN PENTRU ZONA 1 (Continut predominant de text) */
 .zona1 {
-    border-left: 0.6rem solid var(--color-2-accent);
-    padding-left: 2rem 
+  border-left: 0.6rem solid var(--color-2-accent);
+  padding-left: 2rem !important;
 }
 
 .zona1 h2 {
-    border-bottom: 0.15rem solid var(--color-3-baza);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    display: block;
-    border-left: none;
+  border-bottom: 0.15rem solid var(--color-3-baza);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  border-left: none;
+  /* Sterge bordura de la h2 global pt f-pattern */
 }
 
 .zona1 p {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-main>section:not(.zona1):not(.zona2):not(.zona3):not(.zona4):not(.zona5):not(.zona6):not(.zona7):not(.zona8) {
-    margin-top: var(--spatiere-mare);
+main > section:not(.zona1):not(.zona2):not(.zona3):not(.zona4):not(.zona5):not(.zona6):not(.zona7):not(.zona8) {
+  margin-top: var(--spatiere-mare);
 }
 
-main>section {
-    background-color: var(--color-alba);
-    padding: var(--spatiere-mare);
-    border-radius: var(--raza-colt);
-    box-shadow: var(--umbra);
-    border: 0.12rem solid var(--border-color);
-    transition: transform 0.25s ease;
+main > section {
+  background-color: var(--color-alba);
+  padding: var(--spatiere-mare);
+  border-radius: var(--raza-colt);
+  box-shadow: var(--umbra);
+  border: 0.12rem solid var(--border-color);
+  transition: transform 0.25s ease;
 }
 
-main>section:hover {
-    transform: translateY(-0.15rem);
+main > section:hover {
+  transform: translateY(-0.15rem);
 }
 
 section section,
 article,
 aside {
-    margin-top: var(--spatiere-medie);
-    padding: var(--spatiere-medie);
-    border-radius: 0.75rem;
-    background-color: var(--bg-color);
-    border: 0.06rem solid var(--highlight-color);
+  margin-top: var(--spatiere-medie);
+  padding: var(--spatiere-medie);
+  border-radius: 0.75rem;
+  background-color: var(--bg-color);
+  border: 0.06rem solid var(--highlight-color);
 }
 
-h1,h2,h3,h4 {
-    color: var(--color-2-accent);
-    margin-top: 0;
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-2-accent);
+  margin-top: 0;
 }
 
 h2 {
-    border-left: 0.38rem solid var(--color-3-baza);
-    padding-left: 0.75rem;
-    margin-bottom: 1.1rem;
-    font-size: 1.3rem;
+  border-left: 0.38rem solid var(--color-3-baza);
+  padding-left: 0.75rem;
+  margin-bottom: 1.1rem;
+  font-size: 1.3rem;
 }
 
 h3 {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 h4 {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 p {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 a {
-    color: var(--color-2-accent);
+  color: var(--color-2-accent);
 }
 
 a:hover {
-    opacity: 0.92;
+  opacity: 0.92;
 }
 
 img,
@@ -257,480 +505,505 @@ video,
 iframe,
 object,
 embed {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0.75rem;
 }
 
 img {
-    height: auto;
-    display: block;
+  height: auto;
+  display: block;
 }
 
 .picture1 {
-    width: 100%;
-    max-width: 43.75rem;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 43.75rem;
+  margin: 0 auto;
 }
 
 figure {
-    margin: 0;
+  margin: 0;
 }
 
 figcaption {
-    margin-top: 0.65rem;
-    font-style: italic;
-    text-align: center;
-    color: var(--text-color);
-    opacity: 0.9;
-    font-size: 0.9rem;
+  margin-top: 0.65rem;
+  font-style: italic;
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.9;
+  font-size: 0.9rem;
 }
 
 blockquote {
-    margin: 1.25rem 0;
-    padding: 1rem 1.25rem;
-    background-color: var(--highlight-color);
-    border-left: 0.32rem solid var(--color-2-accent);
-    border-radius: 0.65rem;
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  background-color: var(--highlight-color);
+  border-left: 0.32rem solid var(--color-2-accent);
+  border-radius: 0.65rem;
 }
 
 ul,
 ol,
 dl {
-    padding-left: 1.4rem;
+  padding-left: 1.4rem;
 }
 
 dt {
-    font-weight: 700;
-    color: var(--color-2-accent);
+  font-weight: 700;
+  color: var(--color-2-accent);
 }
 
 dd {
-    margin-bottom: 0.65rem;
+  margin-bottom: 0.65rem;
 }
 
 .container-tabel {
-    overflow-x: auto;
-    max-width: 100%;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 table {
-    width: 100%;
-    min-width: 44rem;
-    border-spacing: 0.12rem;
-    border-collapse: separate;
-    background-color: var(--color-alba);
-    border-radius: 0.75rem;
+  width: 100%;
+  min-width: 44rem;
+  border-spacing: 0.12rem;
+  border-collapse: separate;
+  background-color: var(--color-alba);
+  border-radius: 0.75rem;
 }
 
 caption {
-    caption-side: bottom;
-    font-weight: bold;
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
+  caption-side: bottom;
+  font-weight: bold;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
 }
 
 th,
 td {
-    border: 0.06rem solid var(--border-color);
-    padding: 0.75rem;
-    text-align: left;
-    vertical-align: top;
-    font-size: 0.95rem;
+  border: 0.06rem solid var(--border-color);
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.95rem;
 }
 
 thead {
-    background-color: var(--color-2-accent);
-    color: var(--color-alba);
+  background-color: var(--color-2-accent);
+  color: var(--color-alba);
 }
 
 tbody tr {
-    transition: background-color 0.35s ease-in, color 0.35s ease;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: var(--bg-color);
+  background-color: var(--bg-color);
 }
 
 tbody tr:nth-child(even) {
-    background-color: var(--highlight-color);
+  background-color: var(--highlight-color);
 }
 
 tbody tr:hover {
-    background-color: var(--color-3-baza);
-    color: var(--color-alba);
+  background-color: var(--color-3-baza);
+  color: var(--color-alba);
 }
 
 tfoot {
-    background-color: var(--highlight-color);
-    font-weight: bold;
+  background-color: var(--highlight-color);
+  font-weight: bold;
 }
 
 details {
-    margin-bottom: 0.75rem;
-    padding: 0.75rem;
-    background-color: var(--bg-color);
-    border: 0.06rem solid var(--border-color);
-    border-radius: 0.65rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background-color: var(--bg-color);
+  border: 0.06rem solid var(--border-color);
+  border-radius: 0.65rem;
 }
 
 summary {
-    cursor: pointer;
-    font-weight: bold;
-    color: var(--color-2-accent);
-    font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color-2-accent);
+  font-size: 1rem;
 }
 
+/* VIDEO STYLES (Stilizare taburi conform videoclip) */
 .container-video {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: var(--spatiere-mare);
+  display: flex;
+  flex-direction: column;
+  /* flexbox obligatoriu: așezare pe coloană pt tab-uri deasupra */
+  align-items: center;
+  margin-top: var(--spatiere-mare);
 }
 
 .taburi-video {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1.5rem;
-    position: relative;
-    z-index: 2;
-    margin-bottom: -6px;
+  display: flex;
+  flex-direction: row;
+  /* taburile sunt pe același rând */
+  justify-content: center;
+  gap: 1.5rem;
+  /* spațiere între butoane */
+  position: relative;
+  z-index: 2;
+  /* deasupra bordurii groase */
+  margin-bottom: -6px;
+  /* acoperă perfect linia superioară a conturului */
 }
 
 .taburi-video a {
-    text-decoration: none;
-    padding: 0.8rem 1.8rem;
-    background-color: var(--color-alba);
-    color: #0b5e5e;
-
-    font-weight: 700;
-    font-size: 1.15rem;
-    border-radius: 0.5rem 0.5rem 0 0;
-    box-shadow: 0 -3px 10px rgba(11, 94, 94, 0.25),
-        -3px 0 10px rgba(11, 94, 94, 0.15),
-        3px 0 10px rgba(11, 94, 94, 0.15);
-    transition: transform 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--color-alba);
+  color: #0b5e5e;
+  /* nuanța verzuie/teal din referință */
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  /* rotunjit la colțurile de sus */
+  /* Efect de umbră colorată specific screenshot-ului */
+  box-shadow: 0 -3px 10px rgba(11, 94, 94, 0.25), -3px 0 10px rgba(11, 94, 94, 0.15), 3px 0 10px rgba(11, 94, 94, 0.15);
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.taburi-video a:hover,.taburi-video a.active {
-    background-color: #f2fcfc;
-    transform: translateY(-0.25rem);
-    color: #0d7070;
+.taburi-video a:hover,
+.taburi-video a.active {
+  background-color: #f2fcfc;
+  transform: translateY(-0.25rem);
+  /* ridicare subtilă la hover */
+  color: #0d7070;
 }
 
 .iframe-video {
-    width: 100%;
-    border: 6px solid #0b5e5e;
-    background-color: var(--color-alba);
-    padding: 0;
-    position: relative;
-    z-index: 1;
-    border-radius: 2px;
+  width: 100%;
+  border: 6px solid #0b5e5e;
+  /* dreptunghiul alb cu border gros teal */
+  background-color: var(--color-alba);
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  border-radius: 2px;
+  /* colțuri relativ unghiulare, nu foarte rotunde */
 }
 
 .iframe-video iframe {
-    width: 100%;
-    height: 32rem;
-    border: none;
-    display: block;
+  width: 100%;
+  height: 32rem;
+  /* înălțimea vizualizatorului iframe */
+  border: none;
+  display: block;
+  /* elimină spațiul de sub elementul inline-block */
+  /* Nu aplicăm shadow sau border aic, deoarece .iframe-video ține rol de container cu border */
 }
 
 #formula math {
-    display: block;
-    margin: 1rem auto;
-    padding: 1.1rem;
-    max-width: 20rem;
-    background-color: var(--highlight-color);
-    border: 0.12rem dashed var(--color-2-accent);
-    border-radius: 0.75rem;
-    box-shadow: var(--umbra);
-    font-size: 1.5rem;
-    text-align: center;
+  display: block;
+  margin: 1.25rem auto;
+  padding: 1.1rem;
+  max-width: 20rem;
+  background-color: var(--highlight-color);
+  border: 0.12rem dashed var(--color-2-accent);
+  border-radius: 0.75rem;
+  box-shadow: var(--umbra);
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 #formula ul {
-    background-color: var(--bg-color);
-    padding: 0.9rem 1.25rem 0.9rem 2.4rem;
-    border-radius: 0.75rem;
-    border: 0.06rem solid var(--border-color);
+  background-color: var(--bg-color);
+  padding: 0.9rem 1.25rem 0.9rem 2.4rem;
+  border-radius: 0.75rem;
+  border: 0.06rem solid var(--border-color);
 }
 
 #pdf object,
 #pdf embed {
-    border: 0.12rem solid var(--color-3-baza);
-    box-shadow: var(--umbra);
-    background-color: var(--color-alba);
-    min-height: 37.5rem;
+  border: 0.12rem solid var(--color-3-baza);
+  box-shadow: var(--umbra);
+  background-color: var(--color-alba);
+  min-height: 37.5rem;
 }
 
 #harta-imagine figure {
-    text-align: center;
+  text-align: center;
 }
 
 #harta-imagine img {
-    margin: 0 auto;
-    border: 0.18rem solid var(--color-3-baza);
-    box-shadow: var(--umbra);
+  margin: 0 auto;
+  border: 0.18rem solid var(--color-3-baza);
+  box-shadow: var(--umbra);
 }
 
 #locatie iframe,
 #playlist iframe {
-    border: 0.12rem solid var(--color-3-baza);
-    box-shadow: var(--umbra);
-    background-color: var(--color-alba);
+  border: 0.12rem solid var(--color-3-baza);
+  box-shadow: var(--umbra);
+  background-color: var(--color-alba);
 }
 
 meter {
-    width: 13.75rem;
-    height: 1.4rem;
-    vertical-align: middle;
+  width: 13.75rem;
+  height: 1.4rem;
+  vertical-align: middle;
 }
 
 address {
-    font-style: normal;
-    line-height: 1.9;
+  font-style: normal;
+  line-height: 1.9;
 }
 
 address p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
 }
 
 address i {
-    width: 1.5rem;
-    text-align: center;
-    margin-right: 0.35rem;
+  width: 1.5rem;
+  text-align: center;
+  margin-right: 0.35rem;
 }
 
 footer {
-    background: var(--header-bg);
-    color: var(--color-alba);
-    padding: var(--spatiere-mare);
-    border-radius: var(--raza-colt);
-    box-shadow: var(--umbra);
-    margin-bottom: var(--spatiere-mare);
+  background: var(--header-bg);
+  color: var(--color-alba);
+  padding: var(--spatiere-mare);
+  border-radius: var(--raza-colt);
+  box-shadow: var(--umbra);
+  margin-bottom: var(--spatiere-mare);
 }
 
 footer a {
-    color: var(--color-alba);
+  color: var(--color-alba);
 }
 
 footer small {
-    display: block;
-    margin-top: 0.9rem;
-    font-size: 0.85rem;
-    opacity: 0.9;
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 
 .icon-animat {
-    animation: pulse 1.2s infinite alternate;
+  animation: pulse 1.2s infinite alternate;
 }
 
 @keyframes pulse {
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(1.25);
-    }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
 }
-
+/* ================================================================
+   BUTON INAPOI (LINK TOP) - Cerință cu animații, borders & tooltip nativ
+   ================================================================ */
 .link-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 4.5rem;
-    height: 4.5rem;
-    border-radius: 50%;
-
-    background-color: var(--color-4-deschisa);
-    box-shadow: inset 0 0 16px var(--color-2-accent), var(--umbra);
-    
-    border-style: solid;
-    border-width: 6px;
-    border-color: var(--color-1-inchisa) var(--color-alba) var(--color-1-inchisa) var(--color-alba);
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    opacity: 0.6;
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-    z-index: 1000;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  /* background și box shadow intern mai închis */
+  background-color: var(--color-4-deschisa);
+  box-shadow: inset 0 0 16px var(--color-2-accent), var(--umbra);
+  /* border în 4 părți (2 stânga-dreapta deschise, 2 sus-jos închise) */
+  border-style: solid;
+  border-width: 6px;
+  border-color: var(--color-1-inchisa) var(--color-alba) var(--color-1-inchisa) var(--color-alba);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0.6;
+  /* semi-transparent la început */
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  z-index: 1000;
 }
 
 .link-top:hover {
-    opacity: 1;
-    transform: rotate(360deg); 
+  opacity: 1;
+  transform: rotate(360deg);
 }
 
+/* Săgețica centrată */
 .link-top .sageata {
-    font-size: 2.3rem;
-    font-weight: 700;
-    color: var(--color-1-inchisa);
-    filter: blur(3px);
-    transition: filter 0.6s ease-in-out, transform 0.6s ease-in-out;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--color-1-inchisa);
+  filter: blur(3px);
+  /* blur inițial */
+  transition: filter 0.6s ease-in-out, transform 0.6s ease-in-out;
 }
 
 .link-top:hover .sageata {
-    filter: blur(0); /* devine clar */
-    transform: rotate(-360deg); /* rotație inversă - permite săgeții să rămână pe loc */
+  filter: blur(0);
+  /* devine clar */
+  transform: rotate(-360deg);
+  /* rotație inversă - permite săgeții să rămână pe loc */
 }
 
+/* ================================================================
+   RESPONSIVE - ECRAN MEDIU (≤1024px)
+   Textul va avea dimensiunea 15px. Grid pe 2 coloane.
+   ================================================================ */
 @media (max-width: 1024px) {
-    html {
-        font-size: 15px;
-    }
-
-    header,
-    main,
-    footer {
-        width: min(100% - 1.5rem, 59.5rem);
-    }
-
-    .grid-pagina {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "zona1 zona1"
-            "zona8 zona8"
-            "zona3 zona2"
-            "zona4 zona4"
-            "zona5 zona6"
-            "zona7 zona7";
-    }
-
-    main>section {
-        padding: 1.15rem;
-    }
-
-    .iframe-video iframe {
-        height: 20rem;
-    }
-
-    #playlist iframe,
-    #locatie iframe {
-        min-height: 21.875rem;
-    }
+  html {
+    font-size: 15px;
+  }
+  header,
+  main,
+  footer {
+    width: min(100% - 1.5rem, 59.5rem);
+  }
+  .grid-pagina {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "zona1 zona1" "zona8 zona8" "zona3 zona2" "zona4 zona4" "zona5 zona6" "zona7 zona7";
+  }
+  main > section {
+    padding: 1.15rem;
+  }
+  .iframe-video iframe {
+    height: 20rem;
+  }
+  #playlist iframe,
+  #locatie iframe {
+    min-height: 21.875rem;
+  }
 }
-
+/* ================================================================
+   RESPONSIVE - ECRAN MIC (≤768px)
+   Text dim. 14px. O singura coloana. Animatii dezactivate.
+   ================================================================ */
 @media (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
-
-    header,
-    main,
-    footer {
-        width: min(100% - 1rem, 100%);
-    }
-
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
-
-    main>section:hover,
-    .taburi-video a:hover,
-    .taburi-video a:focus,
-    nav a:hover,
-    nav a:focus,
-    .link-top:hover {
-        transform: none;
-    }
-
-    nav>ul {
-        flex-direction: column;
-    }
-
-    nav li ul {
-        position: static;
-        display: block;
-        margin-top: 0.5rem;
-        box-shadow: none;
-        padding-left: 0.75rem;
-        min-width: auto;
-    }
-
-    .grid-pagina {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "zona1"
-            "zona8"
-            "zona3"
-            "zona2"
-            "zona4"
-            "zona5"
-            "zona6"
-            "zona7";
-    }
-
-    .container-video {
-        flex-direction: column;
-    }
-
-    .taburi-video {
-        width: 100%;
-    }
-
-    .iframe-video {
-        width: 100%;
-    }
-
-    iframe,
-    #pdf object,
-    #pdf embed {
-        min-height: 15rem;
-    }
-
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
-
-    th,
-    td {
-        padding: 0.65rem;
-    }
-
-    .link-top {
-        width: 3.3rem;
-        height: 3.3rem;
-        right: 1rem;
-        bottom: 1rem;
-    }
+  html {
+    font-size: 14px;
+  }
+  header,
+  main,
+  footer {
+    width: min(100% - 1rem, 100%);
+  }
+  main > section:hover,
+  .taburi-video a:hover,
+  .taburi-video a:focus,
+  .link-top:hover {
+    transform: none;
+  }
+  .grid-pagina {
+    grid-template-columns: 1fr;
+    grid-template-areas: "zona1" "zona8" "zona3" "zona2" "zona4" "zona5" "zona6" "zona7";
+  }
+  .container-video {
+    flex-direction: column;
+  }
+  .taburi-video {
+    width: 100%;
+  }
+  .iframe-video {
+    width: 100%;
+  }
+  iframe,
+  #pdf object,
+  #pdf embed {
+    min-height: 15rem;
+  }
+  table {
+    border-collapse: collapse;
+    /* Pe ecran mic dispare spațiul dintre celule */
+    border-spacing: 0;
+  }
+  th,
+  td {
+    padding: 0.65rem;
+  }
+  .link-top {
+    width: 3.3rem;
+    height: 3.3rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
 }
-
+/* ================================================================
+   RESPONSIVE - ECRAN FOARTE MIC (≤480px)
+   ================================================================ */
 @media (max-width: 480px) {
-    html {
-        font-size: 13px;
-    }
-
-    body {
-        background-attachment: scroll;
-    }
-
-    header,
-    main,
-    footer {
-        width: min(100% - 0.65rem, 100%);
-    }
-
-    main>section {
-        padding: 0.9rem;
-    }
-
-    h1 {
-        font-size: 1.7rem;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-    }
-
-    #formula math {
-        font-size: 1.2rem;
-        padding: 0.9rem;
-    }
+  html {
+    font-size: 13px;
+  }
+  body {
+    background-attachment: scroll;
+  }
+  header,
+  main,
+  footer {
+    width: min(100% - 0.65rem, 100%);
+  }
+  main > section {
+    padding: 0.9rem;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  #formula math {
+    font-size: 1.2rem;
+    padding: 0.9rem;
+  }
 }
+@media print {
+  /* Пункт 2: скрыть медиа */
+  img, video, iframe, object, embed, figure, figcaption, .link-top {
+    display: none;
+  }
+  /* Пункт 3: grid → block */
+  .grid-pagina {
+    display: block;
+  }
+  /* Пункт 4: ссылки как обычный текст */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  /* Пункт 5: H1 центрирован на первой странице */
+  header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2.5em;
+    text-decoration: underline;
+    page-break-after: always;
+  }
+  nav {
+    display: none;
+  }
+  footer {
+    page-break-before: always;
+  }
+  /* Пункт 6: watermark на каждой странице */
+  @page {
+    @top-center {
+      content: "Karatayev Yunus";
+      width: 100px;
+      height: 2cm;
+      border: double black;
+      opacity: 0.65;
+    }
+  }
+  /* Пункт 7: поля для левых и правых страниц */
+  @page :left {
+    margin-left: 2.5cm;
+    margin-right: 0.5cm;
+  }
+  @page :right {
+    margin-left: 0.5cm;
+    margin-right: 2.5cm;
+  }
+}
+
+/*# sourceMappingURL=Project.css.map */
