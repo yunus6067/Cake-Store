@@ -211,12 +211,14 @@ header h1 {
         }
     }
 
-    /* Ecran mic (Mobil) */
-    @media (max-width: 768px) {
-        display: flex;
-        justify-content: flex-start;
-        position: static;
 
+    @media (max-width: 768px) {
+        #meniu-principal {
+            display: block;
+            position: static;
+        }
+
+        /* Hamburger Icon */
         .hamburger-icon {
             display: flex;
             flex-direction: column;
@@ -229,197 +231,188 @@ header h1 {
             left: 1.5rem;
             background: transparent;
             border-radius: 5px;
-
-            .bara {
-                width: 35px;
-                height: 5px;
-                background-color: var(--color-alba);
-                border-radius: 3px;
-                transition: transform 0.3s ease, opacity 0.3s ease;
-            }
         }
 
-        /* Checkbox behavior: cross animation for the hamburger */
-        #hamburger-check:checked~.hamburger-icon .bara {
-            &:nth-child(1) {
-                transform: translateY(11px) rotate(45deg);
-                background-color: var(--color-alba);
-            }
-
-            &:nth-child(2) {
-                opacity: 0;
-            }
-
-            &:nth-child(3) {
-                transform: translateY(-11px) rotate(-45deg);
-                background-color: var(--color-alba);
-            }
+        .hamburger-icon .bara {
+            width: 35px;
+            height: 5px;
+            background-color: var(--color-alba);
+            border-radius: 3px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
+        /* Hamburger X Animation */
+        #hamburger-check:checked~.hamburger-icon .bara:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        #hamburger-check:checked~.hamburger-icon .bara:nth-child(2) {
+            opacity: 0;
+        }
+
+        #hamburger-check:checked~.hamburger-icon .bara:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+
+        /* The Black Full-Screen Overlay */
         .meniu-lista {
             display: none;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
+            /* VITAL: This centers everything vertically */
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             background-color: #000000;
+            /* Pure black from the video */
             z-index: 999;
-            padding: 5rem 1rem 2rem 1rem;
+            padding: 0;
+            /* Removed padding so it's perfectly centered */
             margin: 0;
             overflow-y: auto;
-
-            >li {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 0.5rem;
-
-                /* Primul element e Home/Acasă */
-                &:first-child>.link-meniu {
-                    width: auto;
-                    margin-bottom: 2rem;
-                    padding: 0;
-                    display: inline-block;
-
-                    .text-meniu {
-                        display: none;
-                    }
-
-                    .fa-icon-meniu {
-                        display: inline;
-                        font-size: 2.5rem;
-                        color: var(--color-alba);
-                        margin-right: 0;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        background-color: transparent;
-                        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-                    }
-                }
-
-                >.link-meniu {
-                    display: inline-block;
-                    width: 100%;
-                    max-width: 400px;
-                    padding: 1rem;
-                    background-color: transparent;
-                    color: var(--color-alba);
-                    font-size: 1.8rem;
-                    font-weight: 700;
-                    letter-spacing: 2px;
-                    text-transform: none;
-                    text-decoration: none;
-                    border-radius: 0;
-                    text-shadow: none;
-
-                    .text-meniu {
-                        display: inline;
-                    }
-
-                    .fa-icon-meniu {
-                        display: none;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        /* The grey block focus + slight text displacement glitch effect */
-                        background-color: #6a6a6a;
-                        text-shadow: 3px 0px 0 rgba(200, 200, 200, 0.6), -3px 0 0 rgba(100, 100, 100, 0.6);
-                        color: var(--color-alba);
-                    }
-                }
-
-                .submeniu {
-                    position: static;
-                    transform: scaleY(1);
-                    min-width: unset;
-                    box-shadow: none;
-                    margin-top: 0;
-                    display: none;
-                    flex-direction: column;
-                    background-color: transparent;
-                    padding: 0;
-
-                    li a {
-                        font-size: 1.4rem;
-                        font-weight: bold;
-                        color: #8c8c8c;
-                        padding: 0.8rem;
-                        letter-spacing: 2px;
-                        background: transparent;
-                        text-shadow: none;
-                        display: inline-block;
-                        width: 100%;
-                        max-width: 400px;
-                        text-align: center;
-
-                        &::after {
-                            display: none;
-                        }
-
-                        &:hover,
-                        &:focus {
-                            color: var(--color-alba);
-                            background-color: #3b3b3b;
-                        }
-                    }
-                }
-
-                /* Keep submenu opened if hover. */
-                &:hover>.submeniu {
-                    display: flex;
-                }
-            }
         }
 
+        /* When menu opens, show the list */
         #hamburger-check:checked~.meniu-lista {
             display: flex;
-            animation: textSpreadMobile 0.5s ease-out forwards;
         }
 
-        /* Initial load animation for hamburger lines */
-         .hamburger-icon .bara {
-             @for $i from 1 through 3 {
-                 &:nth-child(#{$i}) {
-                     animation: burgerAppear 0.6s ease #{$i * 300}ms backwards;
-                 }
-             }
-         }
+        /* List Items */
+        #meniu-principal .meniu-lista>li {
+            width: 100%;
+            /* Takes full width of the screen for the hover effect */
+            text-align: center;
+            margin-bottom: 0;
+            /* Remove margin so hover backgrounds touch */
+        }
+
+        /* The Links */
+        #meniu-principal .meniu-lista>li>.link-meniu {
+            display: block;
+            /* Block makes it full width */
+            width: 100%;
+            padding: 1.2rem 1rem;
+            background-color: transparent;
+            color: var(--color-alba);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-shadow: none;
+            border-radius: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Trigger the spreading animation ONLY on the text when the menu is opened */
+        #hamburger-check:checked~.meniu-lista>li>.link-meniu .text-meniu {
+            display: inline-block;
+            animation: textSpreadCenter 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* Fade in the Home Icon (icons shouldn't have letter-spacing) */
+        #hamburger-check:checked~.meniu-lista>li:first-child>.link-meniu .fa-icon-meniu {
+            animation: fadeIn 0.7s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Full-width Grey Hover Effect (No shadow, no moving) */
+        #meniu-principal .meniu-lista>li>.link-meniu:hover,
+        #meniu-principal .meniu-lista>li>.link-meniu:focus {
+            background-color: #333333;
+            /* Dark grey from the video */
+            text-shadow: none;
+            transform: none;
+        }
+
+        /* First option becomes ONLY the Home Icon */
+        #meniu-principal .meniu-lista>li:first-child>.link-meniu .text-meniu {
+            display: none;
+        }
+
+        #meniu-principal .meniu-lista>li:first-child>.link-meniu .fa-icon-meniu {
+            display: inline-block;
+            font-size: 2.2rem;
+            margin-right: 0;
+        }
+
+        /* Hide icons for the rest of the items */
+        #meniu-principal .meniu-lista>li:not(:first-child)>.link-meniu .fa-icon-meniu {
+            display: none;
+        }
+
+        /* Mobile Submenu */
+        #meniu-principal .meniu-lista>li .submeniu {
+            position: static;
+            transform: scaleY(1);
+            display: none;
+            flex-direction: column;
+            background-color: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        #meniu-principal .meniu-lista>li:hover>.submeniu,
+        #meniu-principal .meniu-lista>li:focus-within>.submeniu {
+            display: flex;
+        }
+
+        #meniu-principal .meniu-lista>li .submeniu li a {
+            font-size: 1.2rem;
+            color: #ffffff;
+            padding: 1rem;
+            text-shadow: none;
+            background: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        #meniu-principal .meniu-lista>li .submeniu li a::after {
+            display: none;
+        }
+
+        /* Submenu Hover */
+        #meniu-principal .meniu-lista>li .submeniu li a:hover,
+        #meniu-principal .meniu-lista>li .submeniu li a:focus {
+            background-color: #1a1a1a;
+        }
     }
 }
 
-@keyframes textSpreadMobile {
-    from {
-        letter-spacing: -3px;
-    }
+/* ================================================================
+   ANIMATII MENIU MOBIL
+   ================================================================ */
 
-    to {
-        letter-spacing: 0px;
-    }
-}
-
-@keyframes burgerAppear {
+/* Text starts squished and spreads out */
+@keyframes textSpreadCenter {
     0% {
-        transform: scale(0) rotate(-45deg);
         opacity: 0;
-        background-color: var(--color-1-inchisa);
+        letter-spacing: -15px;
+        /* Squished letters */
     }
 
-    50% {
-        transform: scale(1.1) rotate(10deg);
-        opacity: 0.5;
-        background-color: var(--color-3-baza);
+    40% {
+        opacity: 1;
+        /* Quickly fades in while spreading */
     }
 
     100% {
-        transform: scale(1) rotate(0deg);
         opacity: 1;
-        background-color: var(--color-alba);
+        letter-spacing: 2px;
+        /* Final readable spacing */
+    }
+}
+
+/* Simple fade in for the Home Icon */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -1054,8 +1047,16 @@ footer small {
 }
 
 @media print {
+
     /* Пункт 2: скрыть медиа */
-    img, video, iframe, object, embed, figure, figcaption, .link-top {
+    img,
+    video,
+    iframe,
+    object,
+    embed,
+    figure,
+    figcaption,
+    .link-top {
         display: none;
     }
 
@@ -1080,8 +1081,14 @@ footer small {
         text-decoration: underline;
         page-break-after: always;
     }
-    nav { display: none; }
-    footer { page-break-before: always; }
+
+    nav {
+        display: none;
+    }
+
+    footer {
+        page-break-before: always;
+    }
 
     /* Пункт 6: watermark на каждой странице */
     @page {
@@ -1099,6 +1106,7 @@ footer small {
         margin-left: 2.5cm;
         margin-right: 0.5cm;
     }
+
     @page :right {
         margin-left: 0.5cm;
         margin-right: 2.5cm;
